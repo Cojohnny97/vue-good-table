@@ -175,13 +175,10 @@
           </thead>
 
           <!-- Table body starts here -->
-          <tbody
-            v-for="(headerRow, hIndex) in paginated"
-            :key="hIndex"
-          >
           <draggable
-                v-model="headerRow.children"
-                ghost-class="opacity-30">
+                :list="headerRow.children"
+                ghost-class="opacity-30" tag="tbody" v-for="(headerRow, hIndex) in paginated" :key="hIndex"
+                @change="(pl)=>($emit('change', pl))">
             <!-- if group row header is at the top -->
             <template #header>
             <vgt-header-row
@@ -299,7 +296,6 @@
             </vgt-header-row>
             </template>
             </draggable>
-          </tbody>
 
           <tbody v-if="showEmptySlot">
             <tr>

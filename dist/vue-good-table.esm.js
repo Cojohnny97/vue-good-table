@@ -16070,11 +16070,17 @@ var __vue_render__$6 = function __vue_render__() {
       }
     }], null, true)
   }), _vm._v(" "), _vm._l(_vm.paginated, function (headerRow, hIndex) {
-    return _c('tbody', {
-      key: hIndex
-    }, [_c('draggable', {
+    return _c('draggable', {
+      key: hIndex,
       attrs: {
-        "ghost-class": "opacity-30"
+        "list": headerRow.children,
+        "ghost-class": "opacity-30",
+        "tag": "tbody"
+      },
+      on: {
+        "change": function change(pl) {
+          return _vm.$emit('change', pl);
+        }
       },
       scopedSlots: _vm._u([{
         key: "header",
@@ -16149,14 +16155,7 @@ var __vue_render__$6 = function __vue_render__() {
           }) : _vm._e()];
         },
         proxy: true
-      }], null, true),
-      model: {
-        value: headerRow.children,
-        callback: function callback($$v) {
-          _vm.$set(headerRow, "children", $$v);
-        },
-        expression: "headerRow.children"
-      }
+      }], null, true)
     }, [_vm._v(" "), _vm._l(headerRow.children, function (row, index) {
       return (_vm.groupOptions.collapsable ? headerRow.vgtIsExpanded : true) ? _c('tr', {
         key: row.originalIndex,
@@ -16219,7 +16218,7 @@ var __vue_render__$6 = function __vue_render__() {
           "index": index
         })], 2) : _vm._e();
       })], 2) : _vm._e();
-    })], 2)], 1);
+    })], 2);
   }), _vm._v(" "), _vm.showEmptySlot ? _c('tbody', [_c('tr', [_c('td', {
     attrs: {
       "colspan": _vm.fullColspan
