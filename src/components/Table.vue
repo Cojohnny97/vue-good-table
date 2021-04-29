@@ -212,6 +212,9 @@
               </template>
             </vgt-header-row>
             <!-- normal rows here. we loop over all rows -->
+            <draggable
+                v-model="headerRow.children"
+                ghost-class="opacity-30">
             <tr
               v-if="groupOptions.collapsable ? headerRow.vgtIsExpanded : true"
               v-for="(row, index) in headerRow.children"
@@ -262,6 +265,7 @@
                 </slot>
               </td>
             </tr>
+            </draggable>
             <!-- if group row header is at the bottom -->
             <vgt-header-row
               v-if="groupHeaderOnBottom"
@@ -352,6 +356,7 @@ import VgtPagination from './pagination/VgtPagination.vue';
 import VgtGlobalSearch from './VgtGlobalSearch.vue';
 import VgtTableHeader from './VgtTableHeader.vue';
 import VgtHeaderRow from './VgtHeaderRow.vue';
+import draggable from 'vuedraggable'
 
 // here we load each data type module.
 import * as CoreDataTypes from './types/index';
