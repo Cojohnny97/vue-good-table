@@ -16078,43 +16078,84 @@
     }), _vm._v(" "), _vm._l(_vm.paginated, function (headerRow, hIndex) {
       return _c('tbody', {
         key: hIndex
-      }, [_vm.groupHeaderOnTop ? _c('vgt-header-row', {
-        "class": _vm.getRowStyleClass(headerRow),
-        attrs: {
-          "header-row": headerRow,
-          "columns": _vm.columns,
-          "line-numbers": _vm.lineNumbers,
-          "selectable": _vm.selectable,
-          "select-all-by-group": _vm.selectAllByGroup,
-          "collapsable": _vm.groupOptions.collapsable,
-          "collect-formatted": _vm.collectFormatted,
-          "formatted-row": _vm.formattedRow,
-          "get-classes": _vm.getClasses,
-          "full-colspan": _vm.fullColspan,
-          "groupIndex": hIndex
-        },
-        on: {
-          "vgtExpand": function vgtExpand($event) {
-            return _vm.toggleExpand(headerRow[_vm.rowKeyField]);
-          },
-          "on-select-group-change": function onSelectGroupChange($event) {
-            return _vm.toggleSelectGroup($event, headerRow);
-          }
-        },
-        scopedSlots: _vm._u([{
-          key: "table-header-row",
-          fn: function fn(props) {
-            return _vm.hasHeaderRowTemplate ? [_vm._t("table-header-row", null, {
-              "column": props.column,
-              "formattedRow": props.formattedRow,
-              "row": props.row
-            })] : undefined;
-          }
-        }], null, true)
-      }) : _vm._e(), _vm._v(" "), _c('draggable', {
+      }, [_c('draggable', {
         attrs: {
           "ghost-class": "opacity-30"
         },
+        scopedSlots: _vm._u([{
+          key: "header",
+          fn: function fn() {
+            return [_vm.groupHeaderOnTop ? _c('vgt-header-row', {
+              "class": _vm.getRowStyleClass(headerRow),
+              attrs: {
+                "header-row": headerRow,
+                "columns": _vm.columns,
+                "line-numbers": _vm.lineNumbers,
+                "selectable": _vm.selectable,
+                "select-all-by-group": _vm.selectAllByGroup,
+                "collapsable": _vm.groupOptions.collapsable,
+                "collect-formatted": _vm.collectFormatted,
+                "formatted-row": _vm.formattedRow,
+                "get-classes": _vm.getClasses,
+                "full-colspan": _vm.fullColspan,
+                "groupIndex": hIndex
+              },
+              on: {
+                "vgtExpand": function vgtExpand($event) {
+                  return _vm.toggleExpand(headerRow[_vm.rowKeyField]);
+                },
+                "on-select-group-change": function onSelectGroupChange($event) {
+                  return _vm.toggleSelectGroup($event, headerRow);
+                }
+              },
+              scopedSlots: _vm._u([{
+                key: "table-header-row",
+                fn: function fn(props) {
+                  return _vm.hasHeaderRowTemplate ? [_vm._t("table-header-row", null, {
+                    "column": props.column,
+                    "formattedRow": props.formattedRow,
+                    "row": props.row
+                  })] : undefined;
+                }
+              }], null, true)
+            }) : _vm._e()];
+          },
+          proxy: true
+        }, {
+          key: "footer",
+          fn: function fn() {
+            return [_vm.groupHeaderOnBottom ? _c('vgt-header-row', {
+              attrs: {
+                "header-row": headerRow,
+                "columns": _vm.columns,
+                "line-numbers": _vm.lineNumbers,
+                "selectable": _vm.selectable,
+                "select-all-by-group": _vm.selectAllByGroup,
+                "collect-formatted": _vm.collectFormatted,
+                "formatted-row": _vm.formattedRow,
+                "get-classes": _vm.getClasses,
+                "full-colspan": _vm.fullColspan,
+                "groupIndex": _vm.index
+              },
+              on: {
+                "on-select-group-change": function onSelectGroupChange($event) {
+                  return _vm.toggleSelectGroup($event, headerRow);
+                }
+              },
+              scopedSlots: _vm._u([{
+                key: "table-header-row",
+                fn: function fn(props) {
+                  return _vm.hasHeaderRowTemplate ? [_vm._t("table-header-row", null, {
+                    "column": props.column,
+                    "formattedRow": props.formattedRow,
+                    "row": props.row
+                  })] : undefined;
+                }
+              }], null, true)
+            }) : _vm._e()];
+          },
+          proxy: true
+        }], null, true),
         model: {
           value: headerRow.children,
           callback: function callback($$v) {
@@ -16122,7 +16163,7 @@
           },
           expression: "headerRow.children"
         }
-      }, _vm._l(headerRow.children, function (row, index) {
+      }, [_vm._v(" "), _vm._l(headerRow.children, function (row, index) {
         return (_vm.groupOptions.collapsable ? headerRow.vgtIsExpanded : true) ? _c('tr', {
           key: row.originalIndex,
           "class": _vm.getRowStyleClass(row),
@@ -16184,35 +16225,7 @@
             "index": index
           })], 2) : _vm._e();
         })], 2) : _vm._e();
-      }), 0), _vm._v(" "), _vm.groupHeaderOnBottom ? _c('vgt-header-row', {
-        attrs: {
-          "header-row": headerRow,
-          "columns": _vm.columns,
-          "line-numbers": _vm.lineNumbers,
-          "selectable": _vm.selectable,
-          "select-all-by-group": _vm.selectAllByGroup,
-          "collect-formatted": _vm.collectFormatted,
-          "formatted-row": _vm.formattedRow,
-          "get-classes": _vm.getClasses,
-          "full-colspan": _vm.fullColspan,
-          "groupIndex": _vm.index
-        },
-        on: {
-          "on-select-group-change": function onSelectGroupChange($event) {
-            return _vm.toggleSelectGroup($event, headerRow);
-          }
-        },
-        scopedSlots: _vm._u([{
-          key: "table-header-row",
-          fn: function fn(props) {
-            return _vm.hasHeaderRowTemplate ? [_vm._t("table-header-row", null, {
-              "column": props.column,
-              "formattedRow": props.formattedRow,
-              "row": props.row
-            })] : undefined;
-          }
-        }], null, true)
-      }) : _vm._e()], 1);
+      })], 2)], 1);
     }), _vm._v(" "), _vm.showEmptySlot ? _c('tbody', [_c('tr', [_c('td', {
       attrs: {
         "colspan": _vm.fullColspan

@@ -179,7 +179,11 @@
             v-for="(headerRow, hIndex) in paginated"
             :key="hIndex"
           >
+          <draggable
+                v-model="headerRow.children"
+                ghost-class="opacity-30">
             <!-- if group row header is at the top -->
+            <template #header>
             <vgt-header-row
               v-if="groupHeaderOnTop"
               @vgtExpand="toggleExpand(headerRow[rowKeyField])"
@@ -211,10 +215,8 @@
                 </slot>
               </template>
             </vgt-header-row>
+            </template>
             <!-- normal rows here. we loop over all rows -->
-            <draggable
-                v-model="headerRow.children"
-                ghost-class="opacity-30">
             <tr
               v-if="groupOptions.collapsable ? headerRow.vgtIsExpanded : true"
               v-for="(row, index) in headerRow.children"
@@ -265,8 +267,8 @@
                 </slot>
               </td>
             </tr>
-            </draggable>
             <!-- if group row header is at the bottom -->
+            <template #footer>
             <vgt-header-row
               v-if="groupHeaderOnBottom"
               :header-row="headerRow"
@@ -295,6 +297,8 @@
                 </slot>
               </template>
             </vgt-header-row>
+            </template>
+            </draggable>
           </tbody>
 
           <tbody v-if="showEmptySlot">
