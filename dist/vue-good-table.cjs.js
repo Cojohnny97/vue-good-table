@@ -9140,7 +9140,7 @@ if (typeof window !== "undefined" && "Vue" in window) {
 
 });
 
-unwrapExports(vuedraggable_umd);
+var draggable = unwrapExports(vuedraggable_umd);
 
 function toInteger(dirtyNumber) {
   if (dirtyNumber === null || dirtyNumber === true || dirtyNumber === false) {
@@ -15120,7 +15120,8 @@ var script$6 = {
     'vgt-pagination': __vue_component__$1,
     'vgt-global-search': __vue_component__$2,
     'vgt-header-row': __vue_component__$5,
-    'vgt-table-header': __vue_component__$4
+    'vgt-table-header': __vue_component__$4,
+    draggable: draggable
   }
 };
 

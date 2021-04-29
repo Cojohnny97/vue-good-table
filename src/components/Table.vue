@@ -1681,6 +1681,7 @@ export default {
     'vgt-global-search': VgtGlobalSearch,
     'vgt-header-row': VgtHeaderRow,
     'vgt-table-header': VgtTableHeader,
+    draggable
   },
 };
 </script>
